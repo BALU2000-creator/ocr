@@ -78,6 +78,7 @@ class Model(tf.keras.Model):
 
         # Adding pixel coordinates to image features
         batch_size, h, w, _ = features.shape
+        # batch_size = #pettu
         x, y = tf.meshgrid(tf.range(w), tf.range(h))
         w_loc = tf.one_hot(x, depth=w)
         h_loc = tf.one_hot(y, depth=h)

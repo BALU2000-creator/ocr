@@ -8,7 +8,7 @@ import cv2
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--image', default="images/03:43   KCORVDB   3 - 3   ('I.jpg", help='link to image')
+parser.add_argument('--image', default="/home/vit/Downloads/attention-ocr/images/00:43 GER 0 - 0 NIR.jpg", help='link to image')
 args = parser.parse_args()
 v = Vocabulary()
 model = Model(decode_units=decode_units,
@@ -17,7 +17,7 @@ model = Model(decode_units=decode_units,
               image_width=image_width,
               finetune=False,
               visual_attention=True)
-model.load_weights('model/model_epoch40')
+model.load_weights('/home/vit/Downloads/attention-ocr/model/checkpoint')
 height, width = model.h, model.w
 
 def show_origin_image():
@@ -62,6 +62,6 @@ if __name__ == '__main__':
 
         result += v.one_hot_decode(predict)
 
-    print(result)
+    print('penetrate it..................................................................',result)
     attention_plot = attention_plot[:len(result), :]
     visual_attention(result, attention_plot)
